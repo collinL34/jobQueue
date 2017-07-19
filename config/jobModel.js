@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
-const JobSchema = new mongoose.schema({
+let JobSchema = new mongoose.schema({
     url: String,
     siteData: String
 });

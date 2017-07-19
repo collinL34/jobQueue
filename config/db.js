@@ -1,2 +1,2 @@
-const mongoose = require('mongoose');
+let mongoose = require('mongoose');
 mongoose.createConnection(process.env.MLAB);
