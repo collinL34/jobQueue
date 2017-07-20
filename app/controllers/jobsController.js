@@ -20,15 +20,11 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-    Job.enqueue({
-            url: 'google.com',
-            siteData: 'blank'
-        },
-        (err, job) => {
-            if (err)
-                res.send(err);
-            res.send(job);
-        });
+    let data = Job.enqueue({
+        url: 'google.com',
+        siteData: 'blank'
+    });
+    res.send(data);
 });
 
 app.put('/:id', (req, res) => {
@@ -42,12 +38,7 @@ app.put('/:id', (req, res) => {
 });
 
 app.delete('/', (req, res) => {
-    Job.dequeue((err, job) => {
-        if (err)
-            res.send(err);
-        res.send(job);
-    });
+    res.send(Job.dequeue());
 });
-
 
 module.exports = app;

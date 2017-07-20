@@ -12,7 +12,7 @@ Queue.prototype.enqueue = function(data) {
     this._storage.push(data);
     let idx = this._newestIndex;
     this._newestIndex++;
-    return idx;
+    return ;
 };
 
 Queue.prototype.dequeue = function() {
@@ -20,7 +20,7 @@ Queue.prototype.dequeue = function() {
         let deletedEntry = this._storage[this._oldestIndex];
         this._storage.shift();
         this._oldestIndex++;
-        return deletedEntry;
+        return this._storage;
     };
 };
 
