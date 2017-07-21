@@ -1,11 +1,11 @@
-let express = require('express');
-let app = express();
+const express = require( 'express' );
+const app = express();
 
-app.listen(3000, function() {
+app.listen( 3000, () => {
   console.log("App listening on Port http://localhost:3000/");
 });
 
-let JobCtrl = require('./app/controllers/jobsController.js');
-app.use('/jobs', JobCtrl);
+const JobCtrl = require( './app/controllers/jobsController.js' );
+app.use( '/jobs', JobCtrl );
 
 module.exports = app;
