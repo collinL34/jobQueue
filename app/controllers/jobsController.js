@@ -7,14 +7,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const Queue = require('./queue.js');
 let Job = new Queue();
 
-function update(searchId, newUrl, storage) {
-    storage.find((job, id) => {
-        if (id === searchId)
-            return job.url = newURL;
-        return 'Sorry no entry found by that Id. Please try again.';
-    });
-};
-
 app.get('/', (req, res) => {
     return res.send(Job.peek());
 });
@@ -28,13 +20,10 @@ app.post('/', (req, res) => {
 });
 
 app.put('/:id', (req, res) => {
-    let storage = Job._storage;
-    console.log(Job._storage);
-    update((req.params.id, req.query.url, storage), (err, job) => {
-        if (err)
-            res.send(err);
-        return res.send(job);
-    });
+  console.log(req.query.url);
+  let data = Job.update(req.params.id, req.query.url);
+  console.log(data);
+  return res.send(data);
 });
 
 app.delete('/', (req, res) => {

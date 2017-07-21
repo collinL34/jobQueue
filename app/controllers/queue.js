@@ -9,12 +9,12 @@ Queue.prototype.peek = function() {
 };
 
 Queue.prototype.enqueue = function(data) {
-    if (data.url !== undefined) {   
+    if (data.url !== undefined) {
         this._storage.push(data);
         var idx = this._newestIndex;
         this._newestIndex++;
         return 'Your Job was successfully saved. Here is the Job Id ' + idx;
-    }
+    };
     return 'Error: No Url entered. Please try again.';
 };
 
@@ -25,6 +25,11 @@ Queue.prototype.dequeue = function() {
         this._oldestIndex++;
         return this._storage;
     };
+};
+
+Queue.prototype.update = function(id, newUrl) {
+    this._storage[id].url = newUrl;
+    return this._storage;
 };
 
 module.exports = Queue;
