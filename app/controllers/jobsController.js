@@ -1,21 +1,18 @@
-const express = require('express');
+const express = require( 'express' );
 const app = express();
-const bodyParser = require('body-parser');
-const request = require("request");
+const bodyParser = require( 'body-parser' );
+const request = require( 'request' );
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
-function htmlScraper(link) {
-    request(link, function(err, body) {
-        return err || body;
-    });
-};
-
 const Queue = require('./queue.js');
-let Job = new Queue();
+const Job = new Queue();
 
 app.get('/', (req, res) => {
     return res.send(Job.peek());
+});
+
+app.get('/:id', (req, res) => {
+    return res.send( Job.show(req.params.id) );
 });
 
 app.post('/', (req, res) => {

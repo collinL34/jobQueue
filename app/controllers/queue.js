@@ -8,6 +8,10 @@ Queue.prototype.peek = function() {
     return this._storage;
 };
 
+Queue.prototype.show = function(id) {
+    return this._storage[id - 1];
+};
+
 Queue.prototype.enqueue = function(data) {
     if (data.url !== undefined) {
         this._storage.push(data);
@@ -33,5 +37,7 @@ Queue.prototype.update = function(id, newUrl) {
     this._storage[id - 1].siteData = newUrl.data;
     return this._storage;
 };
+
+
 
 module.exports = Queue;
