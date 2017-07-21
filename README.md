@@ -1,6 +1,4 @@
-# jobQueue
-
-JobQueue instructions Via Postman.
+# JobQueue instructions Via Postman.
 
 How to check status of all Job Queue entries.
 
