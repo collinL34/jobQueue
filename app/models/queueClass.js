@@ -33,10 +33,8 @@ Queue.prototype.dequeue = function() { //to remove first entry from Queue
 
 Queue.prototype.update = function( id, newUrl ) { //to update Queue entry by Queue ID
     this._storage[ id - 1 ].url = newUrl.url;
-    console.log( newUrl.data );
     this._storage[ id - 1 ].siteData = newUrl.data;
     return this._storage;
 };
-
 
 module.exports = Queue;
