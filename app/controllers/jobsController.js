@@ -16,7 +16,7 @@ app.get( '/:id', ( req, res ) => { //get specific Job Queue ID
 });
 
 app.post( '/', ( req, res ) => { //create new Job Queue entry
-    request( req.query.url, ( err, resp, html ) => {
+    request( req.query.url, ( err, response, html ) => {
         if ( err ) {
             res.send( err );
         };
@@ -29,7 +29,7 @@ app.post( '/', ( req, res ) => { //create new Job Queue entry
 });
 
 app.put( '/:id', ( req, res ) => { //update specific Job Queue ID
-    request( req.query.url, ( err, resp, html ) => {
+    request( req.query.url, ( err, response, html ) => {
         if ( err ) {
             res.send( err );
         };
