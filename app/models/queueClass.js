@@ -12,10 +12,10 @@ Queue.prototype.show = function( id ) { //to check status of specific Queue ID
     return this._storage[ id - 1 ];
 };
 
-Queue.prototype.enqueue = function( data ) { //to add entry to Queue
-    if ( data.url !== undefined ) {
-        this._storage.push( data );
-        var idx = this._newestIndex;
+Queue.prototype.enqueue = function( incomingData ) { //to add entry to Queue
+    if ( incomingData.url !== undefined ) {
+        this._storage.push( incomingData );
+        let idx = this._newestIndex;
         this._newestIndex++;
         return 'Your Job was successfully saved. Here is the Job Id ' + idx;
     };
@@ -31,9 +31,9 @@ Queue.prototype.dequeue = function() { //to remove first entry from Queue
     };
 };
 
-Queue.prototype.update = function( id, newUrl ) { //to update Queue entry by Queue ID
-    this._storage[ id - 1 ].url = newUrl.url;
-    this._storage[ id - 1 ].siteData = newUrl.data;
+Queue.prototype.update = function( jobId, newData ) { //to update Queue entry by Queue ID
+    this._storage[ jobId - 1 ].url = newData.url;
+    this._storage[ jobId - 1 ].siteData = newData.data;
     return this._storage;
 };
 
