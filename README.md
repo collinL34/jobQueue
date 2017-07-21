@@ -2,7 +2,7 @@
 
 JobQueue instructions Via Postman.
 
-How to get all Job Queue entries.
+How to check status of all Job Queue entries.
 
 ```javascript
   Get request
@@ -17,7 +17,7 @@ How to create a new Job Queue.
   http://localhost:3000/jobs?url=https://www.google.com/
 ```
 
-How to access specific Job Id
+How to check status of specific Job Id
 
 ```javascript
   Get request
