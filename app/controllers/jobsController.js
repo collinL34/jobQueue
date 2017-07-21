@@ -1,8 +1,15 @@
-let express = require('express');
-let app = express();
-let bodyParser = require('body-parser');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
+const request = require("request");
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+function htmlScraper(link) {
+    request(link, function(err, body) {
+        return err || body;
+    });
+};
 
 const Queue = require('./queue.js');
 let Job = new Queue();
@@ -12,18 +19,21 @@ app.get('/', (req, res) => {
 });
 
 app.post('/', (req, res) => {
-    let data = Job.enqueue({
-        url: req.query.url,
-        siteData: 'blank'
+    request(req.query.url, (err, resp, html) => {
+        if (err) {
+            res.send(err);
+        }
+        let data = Job.enqueue({
+            url: req.query.url,
+            siteData: html
+        });
+        return res.json(data);
     });
-    return res.json(data);
 });
 
 app.put('/:id', (req, res) => {
-  console.log(req.query.url);
-  let data = Job.update(req.params.id, req.query.url);
-  console.log(data);
-  return res.send(data);
+    let data = Job.update(req.params.id, req.query.url);
+    return res.send(data);
 });
 
 app.delete('/', (req, res) => {

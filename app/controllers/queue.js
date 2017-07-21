@@ -15,7 +15,7 @@ Queue.prototype.enqueue = function(data) {
         this._newestIndex++;
         return 'Your Job was successfully saved. Here is the Job Id ' + idx;
     };
-    return 'Error: No Url entered. Please try again.';
+    return 'Error: No URL entered. Please try again.';
 };
 
 Queue.prototype.dequeue = function() {
