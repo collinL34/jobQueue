@@ -9,10 +9,13 @@ Queue.prototype.peek = function() {
 };
 
 Queue.prototype.enqueue = function(data) {
-    this._storage.push(data);
-    let idx = this._newestIndex;
-    this._newestIndex++;
-    return ;
+    if (data.url !== undefined) {   
+        this._storage.push(data);
+        var idx = this._newestIndex;
+        this._newestIndex++;
+        return 'Your Job was successfully saved. Here is the Job Id ' + idx;
+    }
+    return 'Error: No Url entered. Please try again.';
 };
 
 Queue.prototype.dequeue = function() {

@@ -16,15 +16,15 @@ function update(searchId, newUrl, storage) {
 };
 
 app.get('/', (req, res) => {
-    res.send(Job.peek());
+    return res.send(Job.peek());
 });
 
 app.post('/', (req, res) => {
     let data = Job.enqueue({
-        url: 'google.com',
+        url: req.query.url,
         siteData: 'blank'
     });
-    res.send(data);
+    return res.json(data);
 });
 
 app.put('/:id', (req, res) => {
@@ -33,12 +33,12 @@ app.put('/:id', (req, res) => {
     update((req.params.id, req.query.url, storage), (err, job) => {
         if (err)
             res.send(err);
-        res.send(job);
+        return res.send(job);
     });
 });
 
 app.delete('/', (req, res) => {
-    res.send(Job.dequeue());
+    return res.send(Job.dequeue());
 });
 
 module.exports = app;
