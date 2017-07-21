@@ -4,7 +4,7 @@ const bodyParser = require( 'body-parser' );
 const request = require( 'request' );
 app.use(bodyParser.urlencoded({ extended: true }));
 
-const Queue = require( './queue.js' );
+const Queue = require( '../models/queueClass.js' );
 const Job = new Queue();
 
 app.get( '/', ( req, res ) => { //get all Job Queue entries
