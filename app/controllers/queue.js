@@ -28,7 +28,9 @@ Queue.prototype.dequeue = function() {
 };
 
 Queue.prototype.update = function(id, newUrl) {
-    this._storage[id].url = newUrl;
+    this._storage[id - 1].url = newUrl.url;
+    console.log(newUrl.data);
+    this._storage[id - 1].siteData = newUrl.data;
     return this._storage;
 };
 

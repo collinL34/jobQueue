@@ -32,8 +32,13 @@ app.post('/', (req, res) => {
 });
 
 app.put('/:id', (req, res) => {
-    let data = Job.update(req.params.id, req.query.url);
-    return res.send(data);
+    request(req.query.url, (err, resp, html) => {
+        if (err) {
+            res.send(err);
+        }
+        let data = Job.update(req.params.id, { url: req.query.url, data: html });
+        return res.send(data);
+    });
 });
 
 app.delete('/', (req, res) => {
