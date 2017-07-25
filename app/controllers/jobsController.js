@@ -7,13 +7,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const Queue = require( '../models/queueClass.js' );
 const Job = new Queue();
 
-app.get( '/', ( req, res ) => { //get all Job Queue entries
+app.get( '/', ( req, res ) => { //get all Queue entries
     return res.send( Job.peek() );
 });
 
-app.get( '/:id', ( req, res ) => { //get specific Job Queue ID
-    return res.send( Job.show(req.params.id) );
-});
+// app.get( '/:id', ( req, res ) => { //get specific Queue ID
+//     return res.send( Job.show(req.params.id) );
+// });
 
 app.post( '/', ( req, res ) => { //create new Job Queue entry
     request( req.query.url, ( err, response, html ) => {
