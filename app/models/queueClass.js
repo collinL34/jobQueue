@@ -14,17 +14,26 @@ Queue.prototype.show = function(id) { //to check status of specific Queue ID
 
 Queue.prototype.enqueue = function(jobUrl) { //to add entry to Queue
     if (jobUrl) {
+        let idx = this._newestIndex;
         let newJob = {
             url: jobUrl,
             status: {
                 inProgress: false,
                 complete: false,
                 failed: false
-            };
+            }
         };
-        return 'Job saved to Queue successfully.';
+        this._newestIndex ++;
+        this._storage.push( newJob );
+        return 'Job saved to Queue successfully. Here is your JobQueue ID ' + idx;
     };
     return 'Error: No URL given please try again.';
+};
+
+Queue.prototype.update = function(jobId, newData) { //to update Queue entry by Queue ID
+    this._storage[jobId - 1].url = newData.url;
+    this._storage[jobId - 1].siteData = newData.data;
+    return this._storage;
 };
 
 Queue.prototype.dequeue = function() { //to remove first entry from Queue
@@ -34,12 +43,6 @@ Queue.prototype.dequeue = function() { //to remove first entry from Queue
         this._oldestIndex++;
         return this._storage;
     };
-};
-
-Queue.prototype.update = function(jobId, newData) { //to update Queue entry by Queue ID
-    this._storage[jobId - 1].url = newData.url;
-    this._storage[jobId - 1].siteData = newData.data;
-    return this._storage;
 };
 
 module.exports = Queue;
