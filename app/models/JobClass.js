@@ -6,7 +6,7 @@ function Job( inpUrl ) {
 
 Job.prototype.htmlGrabber = function( job ) {
     request( job.url, ( err, res, html ) => {
-        if (err) {
+        if ( err ) {
             this._storage.push({ results: err });
             job.status.inProgress = false;
             job.status.failed = true;
@@ -18,7 +18,7 @@ Job.prototype.htmlGrabber = function( job ) {
     });
 };
 
-Job.prototype.results = function( id ) {
+Job.prototype.entryResult = function( id ) {
     return this._storage[ id - 1 ];
 };
 

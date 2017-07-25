@@ -5,7 +5,7 @@ app.listen( 3000, () => {
   console.log("App listening on Port http://localhost:3000/jobs");
 });
 
-const JobCtrl = require( './app/controllers/jobsController.js' );
-app.use( '/jobs', JobCtrl );
+const JobsCtrl = require( './app/controllers/jobsController.js' );
+app.use( '/jobs', JobsCtrl );
 
 module.exports = app;
