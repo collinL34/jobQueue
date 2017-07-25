@@ -7,31 +7,30 @@ How to check status of all Job Queue entries.
   http://localhost:3000/jobs
 ```
 
-How to create a new Job Queue.
-
+How to add a new Job Queue to the list.
 
 ```javascript
   Post request
   http://localhost:3000/jobs?url=https://www.google.com/
 ```
 
-How to check status of specific Job Id
+How to check status of specific Job Id and get it's results.
 
 ```javascript
   Get request
   http://localhost:3000/jobs/:id
 ```
 
-How to update a specific Job Id
+How to run the program worker function on the next entry from Job Queue.
 
 ```javascript
   Put request
-  http://localhost:3000/jobs/:id?url=https://github.com/
+  http://localhost:3000/jobs?url=https://github.com/
 ```
 
-How to delete first entry of Job Queue
+How to delete an entry by it's specific Job ID from Job Queue.
 
 ```javascript
   Delete request
-  http://localhost:3000/jobs
+  http://localhost:3000/jobs/:id
 ```
