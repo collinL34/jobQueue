@@ -15,16 +15,16 @@ app.get( '/:id', ( req, res ) => { //get specific Queue ID
     return res.send( JobQueue.show(req.params.id) );
 });
 
-app.post( '/', ( req, res ) => { //create new JobQueue Queue entry
+app.post( '/', ( req, res ) => { //create new JobQueue entry
     return res.json( JobQueue.enqueue(req.query.url) );
 });
 
-app.put( '/', ( req, res ) => { //update specific JobQueue Queue ID
+app.put( '/', ( req, res ) => { //update specific JobQueue ID
     return res.send( JobQueue.update() );
 });
 
-app.delete( '/', ( req, res ) => { //remove first JobQueue Queue entry
-    return res.send( JobQueue.dequeue() );
+app.delete( '/:id', ( req, res ) => { //remove specific JobQueue ID from JobQueue
+    return res.send( JobQueue.dequeue(req.params.id) );
 });
 
 module.exports = app;

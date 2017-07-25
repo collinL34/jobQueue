@@ -14,7 +14,7 @@ Job.prototype.htmlGrabber = function( job ) {
             this._storage.push({ results: html });
             job.status.inProgress = false;
             job.status.complete = true;
-        }
+        };
     });
 };
 

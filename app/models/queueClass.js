@@ -37,18 +37,22 @@ Queue.prototype.enqueue = function(jobUrl) { //to add entry to Queue
 Queue.prototype.update = function() { //to update Queue entry by Queue ID
     let job = this._storage[this._oldestIndex - 1];
     this._oldestIndex++;
-    Worker.htmlGrabber( job );
     job.status.inProgress = true;
+    Worker.htmlGrabber( job );
     return 'Job is now in progress.'
 };
 
-Queue.prototype.dequeue = function() { //to remove first entry from Queue
-    if (this._oldestIndex !== this._newestIndex) {
-        let deletedEntry = this._storage[this._oldestIndex];
-        this._storage.shift();
-        this._oldestIndex++;
-        return this._storage;
-    };
+Queue.prototype.dequeue = function( id ) { //to remove first entry from Queue
+    let deleteIdx = id - 1;
+
+    this._storage.splice( deleteIdx, 1 );
+    Worker._storage.splice( deleteIdx, 1 );
+
+    this._newestIndex--;
+    return this._storage;
 };
 
 module.exports = Queue;
+
+
+
