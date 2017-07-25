@@ -14,7 +14,7 @@ How to add a new Job Queue to the list.
   http://localhost:3000/jobs?url=https://www.google.com/
 ```
 
-How to check status of specific Job Id and get it's results.
+How to check status of specific Job ID and get it's results.
 
 ```javascript
   Get request
