@@ -49,6 +49,7 @@ Queue.prototype.dequeue = function( id ) { //to remove first entry from Queue
     Worker._storage.splice( deleteIdx, 1 );
 
     this._newestIndex--;
+    this._oldestIndex--;
     return this._storage;
 };
 
