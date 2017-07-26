@@ -12,7 +12,7 @@ Queue.prototype.peek = function() { //to check status of all Queue entries
 };
 
 Queue.prototype.show = function( id ) { //to check results of specific Queue ID
-    return Worker.entryResults( id );
+    return Worker.entryResult( id );
 };
 
 Queue.prototype.enqueue = function( jobUrl ) { //to add entry to Queue
@@ -44,6 +44,7 @@ Queue.prototype.update = function() { //to update Queue by running worker progra
 Queue.prototype.dequeue = function( id ) { //to remove specific Queue ID from list
     let deleteIdx = id - 1;
     this._storage.splice( deleteIdx, 1 );
+    console.log( Worker._storage );
     Worker._storage.splice( deleteIdx, 1 );
     this._newestIndex--;
     this._oldestIndex--;
